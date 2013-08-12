@@ -16,12 +16,13 @@
 #
 #------------------------------------------------------------------------------
 
-VTCMD=isql
+PORT=1112
+VTCMD="isql -S $PORT"
 echo "Trying command '$VTCMD'"
 $VTCMD --help | grep "Virtuoso" &> /dev/null
 
 if [ $? -eq 1 ]; then
-  VTCMD=isql-vt
+  VTCMD="isql-vt -S $PORT"
   echo "Trying command '$VTCMD'"
   $VTCMD --help | grep "Virtuoso" &> /dev/null
 fi
